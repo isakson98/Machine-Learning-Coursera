@@ -12,7 +12,9 @@ theta = zeros(size(X, 2), 1);
 
 % ---------------------- Sample Solution ----------------------
 
+inverse_part = pinv(X' * X);
 
+theta = inverse_part * X' * y;
 
 
 % -------------------------------------------------------------

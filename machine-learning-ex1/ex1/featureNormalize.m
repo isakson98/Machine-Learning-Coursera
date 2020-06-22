@@ -24,14 +24,25 @@ sigma = zeros(1, size(X, 2));
 %               each feature. 
 %
 % Hint: You might find the 'mean' and 'std' functions useful.
-%       
 
 
-
-
-
-
-
+% calculating mean for two different columns (2 columns = 2 features)
+% and subtracting the mean from each element in that column  
+% looping through all features
+for i = 1:columns(X)
+    
+    mu(1,i) = mean(X(:,i));
+    %fprintf('mean: ');
+    %fprintf('%.00f',mu(1,i));
+    %fprintf('\n');
+    X_norm(:,i) = X(:,i) .- mu(1,i);
+  
+    %get std of original value
+    sigma(1,i) = std(X(:,i));
+    %fprintf('std: ');
+    %fprintf('%.00f',sigma(1,i));
+    %fprintf('\n');
+    X_norm(:,i) = X_norm(:,i) ./ sigma(1,i);
 
 
 % ============================================================

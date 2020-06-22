@@ -14,7 +14,11 @@ J = 0;
 %               You should set J to the cost.
 
 
-
+hypothesis =  X * theta;
+error = hypothesis - y; 
+squaring = error .^2;
+sum_of_errors = sum(squaring);
+J = (1/(2*m)) * sum_of_errors;
 
 
 % =========================================================================

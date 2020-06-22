@@ -16,17 +16,15 @@ for iter = 1:num_iters
     % Hint: While debugging, it can be useful to print out the values
     %       of the cost function (computeCostMulti) and gradient here.
     %
-
-
-
-
-
-
-
-
-
-
-
+    hypothesis =  X * theta;
+    error = hypothesis - y;
+      
+    for i = 1:size(X,2)
+      
+      sum_of_errors = error' * X(:,i);
+      partial_J = (1/(m)) * sum_of_errors;
+      theta(i,1) = theta(i,1) - alpha * partial_J;
+    end
     % ============================================================
 
     % Save the cost J in every iteration    

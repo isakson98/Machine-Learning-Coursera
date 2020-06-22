@@ -24,6 +24,11 @@
 %  learning rates).
 %
 
+
+
+
+
+
 %% Initialization
 
 %% ================ Part 1: Feature Normalization ================
@@ -51,8 +56,16 @@ fprintf('Normalizing Features ...\n');
 
 [X mu sigma] = featureNormalize(X);
 
+%fprintf('First 10 examples NORMALIZED: \n');
+%fprintf(' x = [%.0f %.0f], y = %.0f \n', [X(1:10,:) y(1:10,:)]');
+
 % Add intercept term to X
 X = [ones(m, 1) X];
+
+
+
+
+
 
 
 %% ================ Part 2: Gradient Descent ================
@@ -106,6 +119,14 @@ fprintf('\n');
 % not need to be normalized.
 price = 0; % You should change this
 
+%multiplying own inputs by optimized theta
+%features have to be normalized
+new_features = [1650, 3];
+new_features = new_features .- mu;
+new_features = new_features ./ sigma;
+%adding first column where x0 is 1
+new_features = [ones(size(new_features, 1), 1) new_features];
+price = new_features * theta;
 
 % ============================================================
 
@@ -115,6 +136,16 @@ fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
+
+
+
+
+
+
+
+
+
+
 %% ================ Part 3: Normal Equations ================
 
 fprintf('Solving with normal equations...\n');
@@ -123,7 +154,7 @@ fprintf('Solving with normal equations...\n');
 % Instructions: The following code computes the closed form 
 %               solution for linear regression using the normal
 %               equations. You should complete the code in 
-%               normalEqn.m
+ %               normalEqn.m
 %
 %               After doing so, you should complete this code 
 %               to predict the price of a 1650 sq-ft, 3 br house.
@@ -151,6 +182,7 @@ fprintf('\n');
 % ====================== YOUR CODE HERE ======================
 price = 0; % You should change this
 
+price = [1 1650 3] * theta
 
 % ============================================================
 

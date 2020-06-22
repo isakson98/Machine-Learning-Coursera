@@ -9,11 +9,23 @@ m = length(y); % number of training examples
 % You need to return the following variables correctly 
 J = 0;
 
+
+
 % ====================== YOUR CODE HERE ======================
-% Instructions: Compute the cost of a particular choice of theta
+% Instructions: Compute the cost ofy . a particular choice of theta
 %               You should set J to the cost.
+%
+%
+% tip of the day -> do everything in several lines of code as one line 
+% may have uniintended consequences
 
+hypothesis =  X * theta;
+error = hypothesis - y; 
+squaring = error .^2;
+sum_of_errors = sum(squaring);
+J = (1/(2*m)) * sum_of_errors;
 
+%J = (1/(2*m)) * sum((hypothesis - y).^2);
 
 
 
